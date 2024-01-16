@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		20D0382B2B56CB8B00A3B4D2 /* FlagButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D0382A2B56CB8B00A3B4D2 /* FlagButton.swift */; };
 		20D9BF0B2B5622CB00DCAAAD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D9BF0A2B5622CB00DCAAAD /* AppDelegate.swift */; };
 		20D9BF0D2B5622CB00DCAAAD /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D9BF0C2B5622CB00DCAAAD /* SceneDelegate.swift */; };
 		20D9BF0F2B5622CB00DCAAAD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20D9BF0E2B5622CB00DCAAAD /* ViewController.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		20D0382A2B56CB8B00A3B4D2 /* FlagButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagButton.swift; sourceTree = "<group>"; };
 		20D9BF072B5622CB00DCAAAD /* hws-project-02.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "hws-project-02.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		20D9BF0A2B5622CB00DCAAAD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20D9BF0C2B5622CB00DCAAAD /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 		20D9BF202B56241300DCAAAD /* View */ = {
 			isa = PBXGroup;
 			children = (
+				20D0382A2B56CB8B00A3B4D2 /* FlagButton.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -161,6 +164,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20D9BF0F2B5622CB00DCAAAD /* ViewController.swift in Sources */,
+				20D0382B2B56CB8B00A3B4D2 /* FlagButton.swift in Sources */,
 				20D9BF0B2B5622CB00DCAAAD /* AppDelegate.swift in Sources */,
 				20D9BF0D2B5622CB00DCAAAD /* SceneDelegate.swift in Sources */,
 			);

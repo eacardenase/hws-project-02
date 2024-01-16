@@ -10,28 +10,12 @@ import UIKit
 class ViewController: UIViewController {
     
     // MARK: - Properties
-    
-    var button1: UIButton = {
-        let button = UIButton(type: .system)
-        
-        button.setImage(UIImage(named: "france")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
-        return button
-    }()
-    var button2: UIButton = {
-        let button = UIButton(type: .system)
-        
-        button.setImage(UIImage(named: "uk")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
-        return button
-    }()
-    var button3: UIButton = {
-        let button = UIButton(type: .system)
-        
-        button.setImage(UIImage(named: "germany")?.withRenderingMode(.alwaysOriginal), for: .normal)
-        
-        return button
-    }()
+   
+    var countries = [String]()
+    var score = 0
+    var button1: UIButton = FlagButton(flagName: "us")
+    var button2: UIButton = FlagButton(flagName: "us")
+    var button3: UIButton = FlagButton(flagName: "us")
     
     // MARK: - Lifecycle
 
@@ -39,6 +23,8 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         configureUI()
+        setupData()
+        askQuestion()
     }
 }
 
@@ -76,5 +62,28 @@ extension ViewController {
             button3.heightAnchor.constraint(equalToConstant: 100),
             button3.widthAnchor.constraint(equalToConstant: 200)
         ])
+    }
+    
+    func setupData() {
+        countries += [
+            "estonia",
+            "france",
+            "germany",
+            "ireland",
+            "italy",
+            "monaco",
+            "nigeria",
+            "poland",
+            "russia",
+            "spain",
+            "uk",
+            "us"
+        ]
+    }
+    
+    func askQuestion() {
+        button1.setImage(UIImage(named: countries[0])?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button2.setImage(UIImage(named: countries[1])?.withRenderingMode(.alwaysOriginal), for: .normal)
+        button3.setImage(UIImage(named: countries[2])?.withRenderingMode(.alwaysOriginal), for: .normal)
     }
 }

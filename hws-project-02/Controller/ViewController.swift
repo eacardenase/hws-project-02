@@ -13,6 +13,8 @@ class ViewController: UIViewController {
    
     var countries = [String]()
     var score = 0
+    var correctAnswer = 0
+    
     var button1: UIButton = FlagButton(flagName: "us")
     var button2: UIButton = FlagButton(flagName: "us")
     var button3: UIButton = FlagButton(flagName: "us")
@@ -82,8 +84,13 @@ extension ViewController {
     }
     
     func askQuestion() {
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+        
         button1.setImage(UIImage(named: countries[0])?.withRenderingMode(.alwaysOriginal), for: .normal)
         button2.setImage(UIImage(named: countries[1])?.withRenderingMode(.alwaysOriginal), for: .normal)
         button3.setImage(UIImage(named: countries[2])?.withRenderingMode(.alwaysOriginal), for: .normal)
+        
+        title = "\(countries[correctAnswer].uppercased())"
     }
 }

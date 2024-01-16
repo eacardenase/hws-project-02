@@ -14,6 +14,7 @@ class ViewController: UIViewController {
     var countries = [String]()
     var score = 0
     var correctAnswer = 0
+    var questionsAsked = 0
     
     var button1: UIButton = {
         let button = FlagButton(flagName: "us")
@@ -102,6 +103,19 @@ extension ViewController {
     }
     
     func askQuestion(action: UIAlertAction! = nil) {
+        if questionsAsked >= 10 {
+            let ac = UIAlertController(title: "GAME OVER", message: "Your final score is \(score)!", preferredStyle: .alert)
+            
+            ac.addAction(UIAlertAction(title: "Replay!", style: .default, handler: { action in
+                self.score = 0
+                self.questionsAsked = 0
+                
+                self.askQuestion(action: action)
+            }))
+            
+            present(ac, animated: true)
+        }
+        
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         
@@ -109,7 +123,12 @@ extension ViewController {
         button2.setImage(UIImage(named: countries[1])?.withRenderingMode(.alwaysOriginal), for: .normal)
         button3.setImage(UIImage(named: countries[2])?.withRenderingMode(.alwaysOriginal), for: .normal)
         
-        title = "\(countries[correctAnswer].uppercased())"
+        updateUI()
+        questionsAsked += 1
+    }
+    
+    func updateUI() {
+        title = "\(countries[correctAnswer].uppercased()) - SCORE: \(score)"
     }
 }
 
@@ -123,9 +142,14 @@ extension ViewController {
             title = "Correct"
             score += 1
         } else {
-            title = "Wrong"
-            score -= 1
+            title = "Wrong, that was the \(countries[sender.tag].uppercased()) flag!"
+            
+            if score > 0 {
+                score -= 1
+            }
         }
+        
+        updateUI()
         
         let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
         

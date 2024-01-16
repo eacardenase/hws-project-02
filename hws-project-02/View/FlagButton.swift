@@ -10,6 +10,7 @@ import UIKit
 class FlagButton: UIButton {
     
     var flagName: String
+    static var currentTag = 0
     
     init(flagName: String) {
         self.flagName = flagName
@@ -21,6 +22,9 @@ class FlagButton: UIButton {
         layer.borderColor = UIColor.lightGray.cgColor
         layer.cornerRadius = 5
         layer.masksToBounds = true
+        tag = Self.currentTag
+        
+        Self.currentTag += 1
     }
     
     required init?(coder: NSCoder) {

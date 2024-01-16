@@ -15,9 +15,27 @@ class ViewController: UIViewController {
     var score = 0
     var correctAnswer = 0
     
-    var button1: UIButton = FlagButton(flagName: "us")
-    var button2: UIButton = FlagButton(flagName: "us")
-    var button3: UIButton = FlagButton(flagName: "us")
+    var button1: UIButton = {
+        let button = FlagButton(flagName: "us")
+        
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    var button2: UIButton = {
+        let button = FlagButton(flagName: "us")
+        
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        return button
+    }()
+    var button3: UIButton = {
+        let button = FlagButton(flagName: "us")
+        
+        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        
+        return button
+    }()
     
     // MARK: - Lifecycle
 
@@ -83,7 +101,7 @@ extension ViewController {
         ]
     }
     
-    func askQuestion() {
+    func askQuestion(action: UIAlertAction! = nil) {
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         
@@ -92,5 +110,27 @@ extension ViewController {
         button3.setImage(UIImage(named: countries[2])?.withRenderingMode(.alwaysOriginal), for: .normal)
         
         title = "\(countries[correctAnswer].uppercased())"
+    }
+}
+
+// MARK: - Actions
+
+extension ViewController {
+    @objc func buttonTapped(_ sender: UIButton) {
+        var title: String
+        
+        if sender.tag == correctAnswer {
+            title = "Correct"
+            score += 1
+        } else {
+            title = "Wrong"
+            score -= 1
+        }
+        
+        let ac = UIAlertController(title: title, message: "Your score is \(score)", preferredStyle: .alert)
+        
+        ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
+        
+        present(ac, animated: true)
     }
 }

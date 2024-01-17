@@ -53,6 +53,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
     func configureUI() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showScore))
         view.backgroundColor = .white
         
         button1.translatesAutoresizingMaskIntoConstraints = false
@@ -156,5 +157,13 @@ extension ViewController {
         ac.addAction(UIAlertAction(title: "Continue", style: .default, handler: askQuestion))
         
         present(ac, animated: true)
+    }
+    
+    @objc func showScore() {
+        let alertController = UIAlertController(title: "Score", message: "Your current score is \(score)", preferredStyle: .alert)
+        
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        
+        present(alertController, animated: true)
     }
 }
